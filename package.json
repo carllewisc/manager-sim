@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node build/index.js",
     "start:dev": "npx nodemon",
+    "start:build": "tsc -w",
     "build": "tsc",
     "lint": "eslint . --ext .ts"
   },
