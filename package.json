@@ -4,7 +4,7 @@
   "description": "An efficient and easy-to-use CLI for managing iOS and Android emulators, optimizing the process of managing applications and devices in development environments. Perfect for mobile app developers looking to improve productivity on both platforms.",
   "main": "index.js",
   "bin": {
-    "manger-sim": "./build/index.js"
+    "manager-sim": "./build/index.js"
   },
   "scripts": {
     "start": "node build/index.js",
@@ -45,5 +45,9 @@
   "dependencies": {
     "cli-table3": "^0.6.3"
   },
-  "preferGlobal": true
+  "preferGlobal": true,
+  "bugs": {
+    "url": "https://github.com/carllewisc/manager-sim/issues"
+  },
+  "homepage": "https://github.com/carllewisc/manager-sim#readme"
 }
