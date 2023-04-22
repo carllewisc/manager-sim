@@ -1,0 +1,48 @@
+{
+  "name": "manager-sim",
+  "version": "0.1.0",
+  "description": "An efficient and easy-to-use CLI for managing iOS and Android emulators, optimizing the process of managing applications and devices in development environments. Perfect for mobile app developers looking to improve productivity on both platforms.",
+  "main": "index.js",
+  "bin": {
+    "manger-sim": "./build/index.js"
+  },
+  "scripts": {
+    "start": "node build/index.js",
+    "start:dev": "npx nodemon",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carllewisc/manager-sim.git"
+  },
+  "keywords": [
+    "manager",
+    "sim",
+    "simulation",
+    "cli",
+    "command",
+    "line",
+    "interface",
+    "typescript",
+    "android"
+  ],
+  "author": "Carl Lewis Castillo",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.13",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "eslint": "^8.39.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "nodemon": "^2.0.22",
+    "prettier": "^2.8.7",
+    "terser": "^5.17.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "cli-table3": "^0.6.3"
+  },
+  "preferGlobal": true
+}
