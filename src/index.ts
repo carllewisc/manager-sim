@@ -1,48 +1,55 @@
 #!/usr/bin/env node
-import { showDevices } from './listDevices';
 
-import { openDevice } from './bootIosEmulator';
-import { closeEmulator } from './shutdownIosEmulator';
-import { resetEmulator } from './resetEmulator';
-import { isValidUUID } from './utils';
+import * as iOSCommands from './ios';
+
+import { isValidUUID, showCurrentOS } from './utils';
 
 const argument = process.argv.slice(2);
 const UUID = argument[1];
 
+showCurrentOS();
+
 switch (argument[0]) {
   case 'list-devices':
-    showDevices();
-    break;
-  case 'list-runtimes':
-    console.log('list-runtimes');
+    (async () => {
+      await iOSCommands.showDevices();
+    })();
     break;
   case 'start-device':
-    if (!UUID){
-      console.log('🚫 Error: No se ha especificado el UUID del dispositivo.');
+    if (!UUID) {
+      console.log('🚫 Error: No device UUID specified.');
       break;
     }
-
     if (!isValidUUID(UUID)) {
-      console.log('🚫 Error: No se ha un un.');
+      console.log('🚫 Error: UUID is not valid.');
       break;
     }
-    openDevice(UUID);
 
+    (async () => {
+      await iOSCommands.openDevice(UUID);
+    })();
     break;
   case 'shutdown-device':
     if (!isValidUUID(UUID)) {
-      console.log('🚫 Error: No se ha especificado el UUID del dispositivo.');
+      console.log('🚫 Error: UUID is not valid.');
+      break;
     }
-    closeEmulator(UUID);
+
+    (async () => {
+      await iOSCommands.closeEmulator(UUID);
+    })();
     break;
   case 'reset-device':
     if (!isValidUUID(UUID)) {
-      console.log('🚫 Error: No se ha especificado el UUID del dispositivo.');
+      console.log('🚫 Error: UUID is not valid.');
       break;
     }
-    resetEmulator(UUID);
+
+    (async () => {
+      await iOSCommands.resetEmulator(UUID);
+    })();
     break;
   default:
-    console.log('default');
+    console.log('🚫 No valid command specified.');
     break;
 }

@@ -1,6 +1,6 @@
 import CliTable3 from 'cli-table3';
 
-import { runCommand } from './utils';
+import { runCommand } from '../utils';
 
 interface SimulatorDevice {
   lastBootedAt: string;
@@ -28,14 +28,13 @@ const showDevices = async () => {
     const { stdout, stderr } = await runCommand(command);
 
     if (stderr) {
-      console.error(`Error en la salida estándar: ${stderr}`);
+      console.log(`Error in standard output: ${stderr}`);
       return;
     }
 
     const data = JSON.parse(stdout);
-    const devices: SimulatorDevice[] = data['devices']['com.apple.CoreSimulator.SimRuntime.iOS-16-2'];
 
-    const items = Object.keys(data['devices'])
+    const devices = Object.keys(data['devices'])
       .map(runtime => {
         const version = runtime.split('SimRuntime')[1].split('-');
 
@@ -47,7 +46,7 @@ const showDevices = async () => {
       .flat()
       .filter((item: SimulatorDevice) => item.isAvailable);
 
-    items.forEach(device => {
+    devices.forEach(device => {
       const name = `📱 ${device.name}`;
       const showState = device.state === 'Booted' ? '✅' : '❌';
       tableDevices.push([device.udid, name, `${showState} ${device.state}`, device.versionOS]);
