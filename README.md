@@ -4,14 +4,14 @@ Manager Sim Assistant is an efficient and easy-to-use CLI for managing iOS and A
 
 ## Features
 
-- List available emulators for iOS and Android
+- List available emulators for iOS
+  - [ ] **Note:** Android support is pending
 - Start and shutdown emulators
-- Display a list of installed apps on a specific emulator
-- Install and uninstall apps on emulators
-- Launch and terminate apps on emulators
-- Take screenshots and record videos from emulators
 - Reset emulators to their original state
-- Open URLs on emulators
+- [ ] Install and uninstall apps on emulators
+- [ ] Launch and terminate apps on emulators
+- [ ] Take screenshots and record videos from emulators
+- [ ] Open URLs on emulators
 
 ## Installation
 
@@ -25,4 +25,24 @@ Or, if you prefer using Yarn:
 
 ```bash
 yarn global add manager-sim
+```
 
+- **List available devices:**
+```bash
+manager-sim list-devices
+```
+
+- **Start a specific device:** 
+```bash
+manager-sim start-device <device-id>
+```
+
+- **Shutdown a specific device:**
+```bash
+manager-sim shutdown-device <device-id>
+```
+
+- **Reset a specific device:**
+```bash
+manager-sim reset-device <device_id>
+```
