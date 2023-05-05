@@ -1,6 +1,6 @@
 import { exec as execCallback } from 'child_process';
 import { promisify } from 'util';
-import os from "os";
+import os from 'os';
 
 export async function runCommand(command: string): Promise<{ stdout: string; stderr: string }> {
   const exec = promisify(execCallback);
@@ -33,3 +33,20 @@ export function showCurrentOS(): void {
 
   console.log(OSS[currentOS as OS]);
 }
+
+export function validateIfCanUseIOS(): boolean {
+  const currentOS = os.type();
+
+  if (currentOS === 'Windows_NT') {
+    console.log('🚫 Error: You cannot use iOS commands on Windows.');
+    return false;
+  }
+
+  if (currentOS === 'Linux') {
+    console.log('🚫 Error: You cannot use iOS commands on Linux.');
+    return false;
+  }
+
+  return true;
+}
+
