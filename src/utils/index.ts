@@ -22,13 +22,16 @@ export function isValidUUID(uuid: string): boolean {
   return uuidPattern.test(uuid);
 }
 
+type OS = 'Windows_NT' | 'Linux' | 'Darwin';
+
+
 export function showCurrentOS(): void {
   const currentOS = os.type();
 
   const OSS: Record<OS, string> = {
     Windows_NT: '🖥 Current OS: Windows',
-    Linux: '🐧 Current OS: Linux',
-    Darwin: '🍎 Current OS: MacOS'
+    Linux: '🐧 Current OS: Linux.change',
+    Darwin: '🍎 Current OS: MacOS.change11112'
   };
 
   console.log(OSS[currentOS as OS]);
@@ -50,3 +53,17 @@ export function validateIfCanUseIOS(): boolean {
   return true;
 }
 
+export function selectDefaultPlatform(param: string): string {
+  const currentOS = os.type();
+
+  const options: Record<string, string> = {
+    android: 'android',
+    ios: 'ios'
+  };
+
+  if (options[param]) {
+    return options[param];
+  }
+
+  return currentOS === 'Darwin' ? 'ios' : 'android';
+}

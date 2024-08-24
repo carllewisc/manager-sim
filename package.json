@@ -1,6 +1,6 @@
 {
   "name": "manager-sim",
-  "version": "0.1.0",
+  "version": "0.1.4",
   "description": "An efficient and easy-to-use CLI for managing iOS and Android emulators, optimizing the process of managing applications and devices in development environments. Perfect for mobile app developers looking to improve productivity on both platforms.",
   "main": "index.js",
   "bin": {
@@ -46,7 +46,8 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "cli-table3": "^0.6.3"
+    "cli-table3": "^0.6.3",
+    "yargs": "17.7.2"
   },
   "preferGlobal": true,
   "bugs": {

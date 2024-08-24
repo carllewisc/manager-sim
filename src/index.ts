@@ -8,7 +8,8 @@ import { isValidUUID, showCurrentOS, validateIfCanUseIOS } from './utils';
 const argument = process.argv.slice(2);
 const UUID = argument[1];
 
-const lastArgument = argument[argument.length - 1] as 'ios' | 'android';
+type Platform = 'ios' | 'android';
+const lastArgument = argument[argument.length - 1] as Platform
 let optionSelected = 'android';
 
 if (lastArgument === 'ios') {
@@ -21,6 +22,7 @@ if (!validateIfCanUseIOS() && lastArgument === 'ios') {
   process.exit(1);
 }
 
+const listCommands = ['list-devices', 'start-device', 'shutdown-device', 'reset-device'];
 const platformCommands = ['ios', 'android'];
 
 if (validateIfCanUseIOS() && (!platformCommands.includes(lastArgument) || lastArgument === 'ios')) {
@@ -48,6 +50,15 @@ if (optionSelected === 'android') {
     case 'shutdown-device':
       (async () => {
         await androidCommands.shutdownDevice(UUID);
+      })();
+      break;
+    case 'reset-data':
+      if (!UUID) {
+        console.log('🚫 Error: No se ha especificado el UUID del dispositivo.');
+        break;
+      }
+      (async () => {
+        await androidCommands.resetDeviceData(UUID, argument[2]);
       })();
       break;
     default:

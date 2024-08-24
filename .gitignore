@@ -145,3 +145,8 @@ dist
 
 .idea
 .DS_Store
+package-lock.json
+
+#src/android
+#build/
+#index.js
